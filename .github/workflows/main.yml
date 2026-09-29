@@ -241,7 +241,7 @@ jobs:
           for f in *.deb; do
             [ -f "$f" ] && tweaks="$tweaks $f"
           done
-          cyan -i youtube.ipa -o ${{ env.RELEASE_PREFIX }}_${{ env.YT_VERSION }}_${{ inputs.tweak_version }}.ipa -uwef $tweaks -n "${{ inputs.display_name }}" -b ${{ inputs.bundle_id }}
+          cyan -i youtube.ipa -o ${{ env.RELEASE_PREFIX }}_${{ env.YT_VERSION }}_${{ inputs.tweak_version }}_build${{ github.run_number }}.ipa -uwef $tweaks -n "${{ inputs.display_name }}" -b ${{ inputs.bundle_id }}
   
       - name: Prepare Releases Notes
         run: |
@@ -278,8 +278,8 @@ jobs:
         uses: softprops/action-gh-release@v3
         with:
           tag_name: ${{ inputs.tweak_version }}_${{ env.YT_VERSION }}(${{ github.run_number }})
-          name: ${{ env.RELEASE_PREFIX }} ${{ inputs.tweak_version }} and ${{ env.YT_VERSION }} ${{ env.FOR_IOS15 }}
-          files: ${{ env.RELEASE_PREFIX }}_${{ env.YT_VERSION }}_${{ inputs.tweak_version }}.ipa
+          name: ${{ env.RELEASE_PREFIX }} ${{ inputs.tweak_version }} and ${{ env.YT_VERSION }} ${{ env.FOR_IOS15 }} (build ${{ github.run_number }})
+          files: ${{ env.RELEASE_PREFIX }}_${{ env.YT_VERSION }}_${{ inputs.tweak_version }}_build${{ github.run_number }}.ipa
           draft: true
           body_path: ${{ env.NOTES_SELECTED }}
 
