@@ -257,7 +257,7 @@ jobs:
 
       - name: Clone YTPlaybackFix beta branch
         if: ${{ inputs.enable_ytpfBETA }}
-        run: git clone --quiet --depth=1 -b beta https://github.com/Mark02-2012/YTPlaybackFix.git
+        run: git clone --quiet --depth=1 -b beta https://github.com/maxwenggcp/YTPlaybackFix.git
 
       - name: Clone YouChooseQuality
         if: ${{ inputs.enable_ycq }}
